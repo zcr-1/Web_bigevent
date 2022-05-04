@@ -27,6 +27,9 @@ function getUserInfo() {
       Authorization:localStorage.getItem('token') || ''
     },
     success:function(res) {
+      if (res.status !== 0) {
+        return layui.layer.msg('获取用户信息失败！')
+      }
       renserAvatar(res.data) 
     }
     //无论成功还是失败，都会调用complete回调函数
